@@ -1,0 +1,18 @@
+{
+        "${testYamlStr}": "Greetings World",
+        "${testPropIntVar2}": "5",
+        "${testYamlBoolean}": "True",
+        "${testYmlVarNumber}": "42",
+        "${testYamlNumber}": "-16",
+        "${testYmlVarBoolean}": "True",
+        "${testPropStrVar2}": "00003",
+        "${testYmlVarString}": "Hello world",
+        "${testPropBoolean}": "True",
+        "${testPropStrVar1}": "This is a string",
+        "${testPropIntVar1}": "1999",
+        "${version}": "5",
+        "${test5Var}": "The file name was successfully interpolated",
+        "${project_groupId}": "com.xebialabs",
+        "${project_artifactId}": "OrderProcessing",
+        "${project_version}": "1.0.0"
+}
