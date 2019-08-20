@@ -9,98 +9,13 @@
            xmlns="http://www.xebialabs.com/deployit/synthetic"
            xsi:schemaLocation="http://www.xebialabs.com/deployit/synthetic synthetic.xsd">
 
-    <type type="xlrelease.LicenseUsage" label="XL Release License Usage" extends="xlrelease.Tile" description="Shows license usages">
-        <property name="width" kind="integer" default="2"/>
-        <property name="height" kind="integer" default="2"/>
-        <property name="uri" hidden="true" default="licenseusage/index.html"/>
-        <property name="title" description="Name of the tile" default="BlackDuck risk profile"/>
-    </type>
-<!-- 
-    <type type="blackduck.BlackduckRiskProfileTile" label="BlackDuck risk profile" extends="xlrelease.Tile"
-          description="Shows the security, license and operation risk of the project.">
-        <property name="width" kind="integer" default="2"/>
-        <property name="height" kind="integer" default="2"/>
-        <property name="uri" hidden="true" default="include/BlackduckRiskProfileTile/blackduck-risk-profile-view.html"/>
-        <property name="title" description="Name of the tile" default="BlackDuck risk profile"/>
-        <property name="embedded" kind="boolean" hidden="true" default="true" required="false"/>
-        <property category="input" name="blackduckServer" referenced-type="blackduck.Server" kind="ci" label="Server"
-                  description="BlackDuck server to connect with"/>
-        <property category="input" name="projectName" label="Project" required="true" description="Project to pull risks from"/>
-        <property category="input" name="version" label="Version" required="true" description="Version to pull risks from"/>
-        <property category="input" name="riskType" label="Risk type" required="true" description="Risk type to display on the chart" kind="enum"
-                  default="Security Risks">
-            <enum-values>
-                <value>Security Risks</value>
-                <value>License Risks</value>
-                <value>Operational Risks</value>
-            </enum-values>
-        </property>
-        <property name="supportedScopes" kind="list_of_string" hidden="true" default="release,folder,global"/>
-    </type>
+    <type type="xlrelease.LicenseUsage" label="XL Release License Usage" extends="xlrelease.Tile" description="Shows license usage.">
+        <property name="width" kind="integer" default="1"/>
+        <property name="height" kind="integer" default="1"/>
+        <property name="embedded" kind="boolean" default="true" hidden="true" required="false"/>
 
-    <type type="blackduck.BlackduckRiskTrendTile" label="BlackDuck risk trend" extends="xlrelease.Tile"
-          description="Shows the security, license and operation risk trend of the project per version.">
-        <property name="width" kind="integer" default="2"/>
-        <property name="height" kind="integer" default="2"/>
-        <property name="uri" hidden="true" default="include/BlackduckRiskTrendTile/blackduck-risk-trend-view.html"/>
-        <property name="title" description="Tile title" default="BlackDuck risk trend"/>
-        <property name="configurationUri" hidden="true"
-                  default="include/BlackduckRiskTrendTile/blackduck-risk-trend-config.html"/>
-        <property name="embedded" kind="boolean" hidden="true" default="true" required="false"/>
-        <property name="cacheKeys" kind="set_of_string" hidden="true"
-                  default="blackduckServer,timeFrame,dateFrom,dateTo,projectName,versionFilterType,versionFilterRegex"/>
-        <property name="expirationTime" kind="integer" hidden="true" default="3600"/>
-        <property category="input" name="blackduckServer" referenced-type="blackduck.Server" kind="ci" label="Server"/>
-        <property category="input" name="projectName" required="true"/>
-        <property category="input" name="timeFrame" kind="enum" enum-class="com.xebialabs.xlrelease.api.v1.forms.TimeFrame" default="LAST_SIX_MONTHS"/>
-        <property category="input" name="dateFrom" kind="date"/>
-        <property category="input" name="dateTo" kind="date"/>
-        <property category="input" name="versionFilterType" required="false" kind="enum"
-                  enum-class="com.xebialabs.xlrelease.api.v1.forms.VersionFilters" default="ALL"/>
-        <property category="input" name="versionFilterRegex" required="false" kind="string" default="[^\\n]+"/>
-        <property category="input" name="riskType" required="true" kind="enum" default="SECURITY_RISK">
-            <enum-values>
-                <value>SECURITY_RISK</value>
-                <value>LICENSE_RISK</value>
-                <value>OPERATIONAL_RISK</value>
-            </enum-values>
-        </property>
-        <property name="supportedScopes" kind="list_of_string" hidden="true" default="release,folder,global"/>
+        <property name="uri" kind="string" default="licenseusage/index.html" hidden="true"/>
+        <property name="title" kind="string" description="Name of the tile" default="License Usage"/>
+        <property name="supportedScopes" kind="list_of_string" default="global" hidden="true"/>
     </type>
-
-    <type type="blackduck.task" extends="xlrelease.PythonScript" virtual="true">
-        <property name="iconLocation" default="blackduck/blackduck.svg" hidden="true"/>
-        <property name="taskColor" hidden="true" default="#f84a06"/>
-        <property category="input" name="blackduckServer" referenced-type="blackduck.Server" kind="ci" label="Server"
-                  required="true" description="BlackDuck server to connect with"/>
-        <property category="input" name="projectName" required="true" label="Project"
-                  description="Project to pull risks from"/>
-    </type>
-
-    <type type="blackduck.checkCompliance" extends="blackduck.task" label="BlackDuck: Check Compliance">
-        <property name="configurationUri" hidden="true"
-                  default="include/BlackduckCheckComplianceTask/blackduck-check-compliance-task-view.html"/>
-        <property name="scriptLocation" default="blackduck/task/check_compliance.py" hidden="true"/>
-        <property category="input" name="versionName" required="true" label="Version"
-                  description="Version to pull risks from"/>
-        <property category="input" name="securityRiskHighThreshold" kind="integer" default="0" required="true"
-                  label="Security risk (High)" description="High"/>
-        <property category="input" name="securityRiskMediumThreshold" kind="integer" default="0" required="true"
-                  label="Security risk (Medium)" description="Medium"/>
-        <property category="input" name="securityRiskLowThreshold" kind="integer" default="0" required="true"
-                  label="Security risk (Low)" description="Low"/>
-        <property category="input" name="licenseRiskHighThreshold" kind="integer" default="0" required="true"
-                  label="License risk (High)" description="High"/>
-        <property category="input" name="licenseRiskMediumThreshold" kind="integer" default="0" required="true"
-                  label="License risk (Medium)" description="Medium"/>
-        <property category="input" name="licenseRiskLowThreshold" kind="integer" default="0" required="true"
-                  label="License risk (Low)" description="Low"/>
-        <property category="input" name="operationalRiskHighThreshold" kind="integer" default="0" required="true"
-                  label="Operational risk (High)" description="High"/>
-        <property category="input" name="operationalRiskMediumThreshold" kind="integer" default="0" required="true"
-                  label="Operational risk (Medium)" description="Medium"/>
-        <property category="input" name="operationalRiskLowThreshold" kind="integer" default="0" required="true"
-                  label="Operational risk (Low)" description="Low"/>
-    </type> -->
-
 </synthetic>

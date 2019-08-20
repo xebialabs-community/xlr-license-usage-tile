@@ -14,12 +14,12 @@ See the [XL Release reference manual](https://docs.xebialabs.com/xl-release) for
 
 ## Overview
 
-The plugin provides the ability to populate Release Variables with values retrieved from remote YAML or property files (files must be accessible via URL). One possible use case is a single XL Release Template used for multiple projects stored in multiple repositories with project specific Release Variable values stored in a property or YAML file within each repository. The plugin task - Set Variables From Remote Files - will retrieve the file or files, parse each file and then set the values of designated release variables. 
+The plugin makes available a global tile to display license useage.  You can create a custom global dashboard and add this tile to it.
 
 ## Requirements
 
 * **Requirements**
-*  **XL Release**   8.5.0+
+*  **XL Release**   9.0.0+
 
 ## Installation
 
