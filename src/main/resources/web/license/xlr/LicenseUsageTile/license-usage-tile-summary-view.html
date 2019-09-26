@@ -1,0 +1,64 @@
+<html>
+<head>
+    <link rel="stylesheet" href="license-usage-tile.css" type="text/css">
+    <script
+        src="https://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous">
+    </script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans" type="text/css">
+</head>
+<script>
+window.addEventListener("xlrelease.load", function () {
+    var getUrl = window.location;
+    var licenseUrl = getUrl .protocol + "//" + getUrl.host + "/server/license";
+
+    fetch(licenseUrl)
+        .then(data=>{return data.json()})
+        .then(res=>{
+            $("#xlr-product").append(res.product)
+            $("#xlr-licensed-to").append(res.licensedTo)
+            $("#xlr-expires").append(res.expiresAfter)
+            $("#xlr-max-users").append(res.maxNumberOfUsers ? res.maxNumberOfUsers : 'unlimited')
+            $("#xlr-users-remaining").append(res.usersLeftCount ? res.usersLeftCount : 'unlimited')
+//contact: "XebiaLabs Internal Use Only <info@xebialabs.com>"
+//expiresAfter: "2037-01-01"
+//licensedTo: "XebiaLabs"
+//maxNumberOfUsers: null
+//product: "XL Release"
+//repositoryId: null
+//usersLeftCount: null
+//version: "3"            
+        })
+        .catch(error=>console.log(error))
+
+    window.xlrelease.queryTileData(res=>{
+        var usage = res.data.data.usage;
+        $("#xlr-users-active").append(usage.users_active)
+        $("#xlr-users-inactive").append(usage.users_inactive)
+    });
+
+})
+</script>
+<body>
+<div class="license-usage-tile-summary">
+    <div class="license-usage-tile-section" id="xlr-product"></div>
+    <div class="license-usage-tile-wrapper">
+        <div class="grid-item">Licensed To</div>
+        <div class="grid-item" id="xlr-licensed-to"></div>
+        <div class="grid-item">Expires</div>
+        <div class="grid-item" id="xlr-expires"></div>
+        <div class="grid-item">Max Users</div>
+        <div class="grid-item" id="xlr-max-users"></div>
+        <div class="grid-item">Remaining</div>
+        <div class="grid-item" id="xlr-users-remaining"></div>
+
+        <div class="grid-item">&nbsp;</div><div class="grid-item">&nbsp;</div>
+        
+        <div class="grid-item">Active Users</div>
+        <div class="grid-item" id="xlr-users-active"></div>
+        <div class="grid-item">Inactive Users</div>
+        <div class="grid-item" id="xlr-users-inactive"></div>
+    </div>
+</body>
+<html>

@@ -1,0 +1,14 @@
+.license-usage-tile-summary {
+  font-size: 16px;
+}
+.license-usage-tile-section {
+  font-size: 14px;
+  padding-top: 4px;
+  padding-bottom: 2px;
+}
+.license-usage-tile-wrapper { 
+  font-size: 11px;
+  display: grid; 
+  grid-template-columns: repeat(2, 1fr); 
+  column-gap: 5px;
+} 

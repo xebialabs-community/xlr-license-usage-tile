@@ -1,21 +1,47 @@
-<!--
-
-    Copyright (c) 2019. All rights reserved.
-
-    This software and all trademarks, trade names, and logos included herein are the property of XebiaLabs, Inc. and its affiliates, subsidiaries, and licensors.
-
--->
 <synthetic xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
            xmlns="http://www.xebialabs.com/deployit/synthetic"
            xsi:schemaLocation="http://www.xebialabs.com/deployit/synthetic synthetic.xsd">
 
-    <type type="xlrelease.LicenseUsage" label="XL Release License Usage" extends="xlrelease.Tile" description="Shows license usage.">
-        <property name="width" kind="integer" default="1"/>
-        <property name="height" kind="integer" default="1"/>
-        <property name="embedded" kind="boolean" default="true" hidden="true" required="false"/>
+    <type type="license.xlr.LicenseUsageTile" 
+            label="License Usage : XL Release" 
+            description="Display license information and usage for XL Release"
+            extends="xlrelease.Tile">
 
-        <property name="uri" kind="string" default="licenseusage/index.html" hidden="true"/>
-        <property name="title" kind="string" description="Name of the tile" default="License Usage"/>
-        <property name="supportedScopes" kind="list_of_string" default="global" hidden="true"/>
+        <!-- Path to the HTML template of the dashboard view of the tile -->
+        <property name="uri" hidden="true" default="license/xlr/LicenseUsageTile/license-usage-tile-summary-view.html" />
+        <!-- Title of the tile, this property is predefined in the parent type, but here you override its default value -->
+        <property name="title" description="Display name of the tile" default="License Usage"/>
+
+        <!-- Tile configuration properties -->
+        <property name="lastUseCutoff" kind="integer" category="input" required="true" default="30"
+                description="Number of days since last login to consider a user inactive." />
+
+        <property name="supportedScopes" kind="list_of_string" hidden="true" default="global" description="The location where the tile is available."/>
+        <property name="cacheEnabled" kind="boolean" hidden="true" default="true" description="True if tile data should be cached."/>
+        <property name="userSpecificCache" kind="boolean" hidden="true" default="false" description="True if tile data should be cached per user."/>
+        <property name="expirationTime" kind="integer" hidden="true" default="30" description="Expiration time for a tile cache (in seconds)."/>
+        <property name="maxCacheEntries" kind="integer" hidden="true" default="500" description="Maximum cache entries."/>
+    </type>
+
+    <type type="license.xld.LicenseUsageTile" 
+            label="License Usage : XL Deploy" 
+            description="Display license information and usage for XL Deploy"
+            extends="xlrelease.Tile">
+
+        <!-- Path to the HTML template of the dashboard view of the tile -->
+        <property name="uri" hidden="true" default="license/xld/LicenseUsageTile/license-usage-tile-summary-view.html" />
+        <!-- Title of the tile, this property is predefined in the parent type, but here you override its default value -->
+        <property name="title" description="Display name of the tile" default="License Usage"/>
+
+        <!-- Tile configuration properties -->
+        <property name="xldeployServer" category="input" label="Server" referenced-type="xldeploy.XLDeployServer" kind="ci"/>
+        <property name="username" category="input" required="false"/>
+        <property name="password" category="input" required="false" password="true"/>
+
+        <property name="supportedScopes" kind="list_of_string" hidden="true" default="global" description="The location where the tile is available."/>
+        <property name="cacheEnabled" kind="boolean" hidden="true" default="true" description="True if tile data should be cached."/>
+        <property name="userSpecificCache" kind="boolean" hidden="true" default="false" description="True if tile data should be cached per user."/>
+        <property name="expirationTime" kind="integer" hidden="true" default="30" description="Expiration time for a tile cache (in seconds)."/>
+        <property name="maxCacheEntries" kind="integer" hidden="true" default="500" description="Maximum cache entries."/>
     </type>
 </synthetic>

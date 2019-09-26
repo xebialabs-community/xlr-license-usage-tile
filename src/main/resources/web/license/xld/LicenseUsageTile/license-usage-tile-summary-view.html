@@ -1,0 +1,64 @@
+<html>
+<head>
+    <link rel="stylesheet" href="license-usage-tile.css" type="text/css">
+    <script
+        src="https://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous">
+    </script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans" type="text/css">
+</head>
+<script>
+window.addEventListener("xlrelease.load", function () {
+    window.xlrelease.queryTileData(res=>{
+        var usage = res.data.data.usage;
+        $("#xld-product").append(usage.product)
+        $("#xld-licensed-to").append(usage.licensed_to)
+        $("#xld-expires").append(usage.expires)
+        $("#xld-users-max").append(usage.max_users ? usage.max_users : 'unlimited')
+        $("#xld-users-active").append(usage.users_active)
+
+        usage.licensed_usage.forEach(function (ci) {
+            // create a nice name from the ci type.  caps everything except the last token.
+            var ciToks = ci.ciType.split('.')
+            var ciTokCnt = ciToks.length;
+            var ciName = ""
+            for (var i = 0; i < ciTokCnt-1; i++) {
+                    ciName = ciName + ciToks[i].toUpperCase() + ' '
+            }
+            ciName = ciName + ciToks[ciTokCnt-1]
+
+            $('#xld-licensed-usage').append(
+                '<div class="license-usage-tile-wrapper">' + 
+                '<div class="grid-item">&nbsp;</div><div class="grid-item">&nbsp;</div>' +
+                '<div class="grid-item">' + ciName + '</div><div class="grid-item">&nbsp;</div>' +
+                '<div class="grid-item">&nbsp;Licensed</div><div class="grid-item">' + ci.licensed + '</div>' +
+                '<div class="grid-item">&nbsp;In Use</div><div class="grid-item">' + ci.inUse + '</div>' +
+                '</div>'
+            )
+        })
+    });
+})
+</script>
+<body>
+<div class="license-usage-tile-summary">
+    <div class="license-usage-tile-section" id="xld-product"></div>
+    <div class="license-usage-tile-wrapper">
+        <div class="grid-item">Licensed To</div>
+        <div class="grid-item" id="xld-licensed-to"></div>
+        <div class="grid-item">Expires</div>
+        <div class="grid-item" id="xld-expires"></div>
+    </div>
+
+    <div id="xld-licensed-usage"></div>
+
+    <div class="license-usage-tile-wrapper">
+        <div class="grid-item">&nbsp;</div><div class="grid-item">&nbsp;</div>
+        
+        <div class="grid-item">Max Users</div>
+        <div class="grid-item" id="xld-users-max"></div>
+        <div class="grid-item">Active Users</div>
+        <div class="grid-item" id="xld-users-active"></div>
+    </div>
+</body>
+<html>

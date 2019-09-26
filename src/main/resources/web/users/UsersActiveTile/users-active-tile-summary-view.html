@@ -1,0 +1,73 @@
+<html>
+<head>
+    <link rel="stylesheet" href="license-usage-tile.css" type="text/css">
+    <script
+        src="https://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous">
+    </script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans" type="text/css">
+</head>
+<script>
+window.addEventListener("xlrelease.load", function () {
+    console.log('xlrelease properties')
+    for(var propertyName in window.xlrelease) {
+        console.log('Property: ' + propertyName)
+    }
+
+    var getUrl = window.location;
+    var licenseUrl = getUrl .protocol + "//" + getUrl.host + "/server/license";
+
+    fetch(licenseUrl)
+        .then(data=>{return data.json()})
+        .then(res=>{
+            console.log(res)
+contact: "XebiaLabs Internal Use Only <info@xebialabs.com>"
+expiresAfter: "2037-01-01"
+licensedTo: "XebiaLabs"
+maxNumberOfUsers: null
+product: "XL Release"
+repositoryId: null
+usersLeftCount: null
+version: "3"            
+        })
+        .catch(error=>console.log(error))
+
+//    window.xlrelease.backend.get('server/license').then(resp => {
+//       var license = resp.data;
+//       console.println(license)
+//    });
+
+    window.xlrelease.queryTileData(function (response) {
+        var usage = response.data.data.usage;
+        $("#xlr-licenses").append(usage.xlr_total_users + ' of ' + usage.xlr_licenses)
+        $("#xlr-active").append(usage.xlr_active)
+        $("#xlr-inactive").append(usage.xlr_inactive)
+        $("#xld-licenses").append(usage.xld_defined_hosts + ' of ' + usage.xld_licenses)
+        $("#xld-active").append(usage.xld_active)
+        $("#xld-inactive").append(usage.xld_inactive)
+    });
+})
+</script>
+<body>
+<div class="license-usage-tile-summary">
+    <div class="license-usage-tile-section">XL Release</div>
+    <div class="license-usage-tile-wrapper">
+        <div class="grid-item">Licenses</div>
+        <div class="grid-item" id="xlr-licenses"></div>
+        <div class="grid-item">Active Users</div>
+        <div class="grid-item" id="xlr-active"></div>
+        <div class="grid-item">Inactive Users</div>
+        <div class="grid-item" id="xlr-inactive"></div>
+    </div>
+    <div class="license-usage-tile-section">XL Deploy</div>
+    <div class="license-usage-tile-wrapper">
+        <div class="grid-item">Licenses</div>
+        <div class="grid-item" id="xld-licenses"></div>
+        <div class="grid-item">Active Users</div>
+        <div class="grid-item" id="xld-active"></div>
+        <div class="grid-item">Inactive Users</div>
+        <div class="grid-item" id="xld-inactive"></div>
+    </div>
+</body>
+<html>
