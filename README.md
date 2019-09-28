@@ -9,7 +9,7 @@
 ## Preface
 
 This document describes the functionality provided by the XL Release xlr-license-usage-plugin. 
- 
+
 See the [XL Release reference manual](https://docs.xebialabs.com/xl-release) for background information on XL Release and release automation concepts.  
 
 ## Overview
@@ -23,12 +23,24 @@ The plugin makes available two global tiles to display license useage.  One for 
 
 ## Installation
 
-*   Copy the latest JAR file from the [releases page](https://github.com/xebialabs-community/xlr-license-usage-plugin/releases) into the `XL_RELEASE_SERVER/plugins/__local__` directory.
-*   Restart the XL Release server.
+* Copy the latest JAR file from the [releases page](https://github.com/xebialabs-community/xlr-license-usage-plugin/releases) into the `XL_RELEASE_SERVER/plugins/__local__` directory.
+* Restart the XL Release server.
 
 ## Usage
 
-## Developers 
+**Steps**
+
+1. Navigate to Dashboards tab
+1. Click 'Add New Dashboard' button
+    1. Select 'blank' dashboard template
+    1. Give your new dashboard a name and description
+1. Click 'Configure Dashboard' button
+1. Click 'Add Tile" button
+1. Select 'License : XL Release' tile
+1. Optionally select 'License : XL Deploy' tile
+    1. Configure XL Deploy tile by selecting an XL Deploy server you've configured in Settings -> Shared Configuration
+
+## Developers
 
 Build and package the plugins with...
 
