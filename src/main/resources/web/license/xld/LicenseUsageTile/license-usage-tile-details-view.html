@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- Bootstrap CSS dependency -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="license-usage-tile.css" type="text/css">
+    <script
+            src="https://code.jquery.com/jquery-3.2.1.min.js"
+            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+            crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+</head>
+<script>
+    window.addEventListener("xlrelease.load", function () {
+
+        window.xlrelease.queryTileData(res=>{
+            var users_active = res.data.data.users_active;
+            Object.keys(users_active).forEach(key=>{
+                $("#active-users").append(
+                    '<tr>' +
+                    '<td>' + key + '</td>' +
+                    '<td>' + users_active[key] + '</td>' +
+                    '</tr>'
+                );
+            })
+        });
+    });
+</script>
+<body>
+    <h3>Users</h3>
+    <table class="table table-rounded table-striped">
+        <thead>
+        <tr>
+            <th>Username</th>
+            <th>Roles</th>
+        </tr>
+        </thead>
+        <tbody id="active-users">
+
+        </tbody>
+    </table>
+</body>
+</html>

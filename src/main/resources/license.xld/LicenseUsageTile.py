@@ -53,10 +53,15 @@ if response.status != 200:
 
 roles = json.loads(response.response)
 
-# count all principals in all roles
-users_active = 0
+# get principals in all roles, note that 'admin' doesn't show up here
+users = {}
 for role in roles:
-    users_active = users_active + len(role['principals'])
+    for principal in role['principals']:
+        print('Procssing principal: %s' % principal)
+        if principal in users:
+            users[principal].append(role['role']['name'])
+        else:
+            users[principal] = [role['role']['name']]
 
 # form response
 data = {
@@ -66,7 +71,8 @@ data = {
         "expires": lic['expiresAfter'],
         "licensed_usage": lic['licensedCiUsages'],
         "users_max": lic['maxUsers'],
-        "users_active": users_active
-    }
+        "users_active": len(users)
+    },
+    "users_active": users
 }
 

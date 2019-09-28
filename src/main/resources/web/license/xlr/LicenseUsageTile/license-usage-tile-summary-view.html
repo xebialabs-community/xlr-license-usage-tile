@@ -21,21 +21,21 @@ window.addEventListener("xlrelease.load", function () {
             $("#xlr-expires").append(res.expiresAfter)
             $("#xlr-max-users").append(res.maxNumberOfUsers ? res.maxNumberOfUsers : 'unlimited')
             $("#xlr-users-remaining").append(res.usersLeftCount ? res.usersLeftCount : 'unlimited')
-//contact: "XebiaLabs Internal Use Only <info@xebialabs.com>"
-//expiresAfter: "2037-01-01"
-//licensedTo: "XebiaLabs"
-//maxNumberOfUsers: null
-//product: "XL Release"
-//repositoryId: null
-//usersLeftCount: null
-//version: "3"            
+// product: "XL Release"
+// licensedTo: "XebiaLabs"
+// contact: "XebiaLabs Internal Use Only <info@xebialabs.com>"
+// expiresAfter: "2037-01-01"
+// maxNumberOfUsers: null
+// usersLeftCount: null
+// repositoryId: null
+// version: "3"            
         })
         .catch(error=>console.log(error))
 
     window.xlrelease.queryTileData(res=>{
         var usage = res.data.data.usage;
-        $("#xlr-users-active").append(usage.users_active)
-        $("#xlr-users-inactive").append(usage.users_inactive)
+        $("#xlr-users-active").append(usage.users_active_cnt)
+        $("#xlr-users-inactive").append(usage.users_inactive_cnt)
     });
 
 })
