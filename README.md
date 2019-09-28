@@ -14,7 +14,7 @@ See the [XL Release reference manual](https://docs.xebialabs.com/xl-release) for
 
 ## Overview
 
-The plugin makes available a global tile to display license useage.  You can create a custom global dashboard and add this tile to it.
+The plugin makes available two global tiles to display license useage.  One for XL Release and one for XL Deploy.  You can create a custom global dashboard and add these tiles to it.
 
 ## Requirements
 

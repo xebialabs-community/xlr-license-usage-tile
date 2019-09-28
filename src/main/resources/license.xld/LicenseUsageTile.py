@@ -9,6 +9,8 @@ from xlrelease.HttpRequest import HttpRequest
 
 # configure HttpRequest of XLD
 # xldeployServer: [u'scriptLocation', u'proxyUsername', u'proxyPassword', u'title', u'proxyHost', u'folderId', u'url', u'proxyPort', u'password', u'authenticationMethod', u'domain', u'verifySSL', u'id', u'username']
+if not xldeployServer:
+    raise Exception('Add your XL Deploy server in Tile configuration')
 if not username:
     username = xldeployServer.get('username')
 if not password:

@@ -38,10 +38,8 @@ for role in roles:
         else:
             user_roles[principal.username] = [role.name]
 
-# convert to list of dict
+# convert to list of dict and add roles
 xlr_active_users = convert_user_obj_list(xlr_active_users_obj, user_roles)
-
-# convert to list of dict
 xlr_inactive_users = convert_user_obj_list(xlr_inactive_users_obj, user_roles)
 
 # form response
