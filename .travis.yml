@@ -13,4 +13,4 @@ deploy:
   on:
     all_branches: true
     tags: true
-    repo: xebialabs-community/xlr-license-usage-plugin
+    repo: xebialabs-community/xlr-license-usage-tile

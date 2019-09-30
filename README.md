@@ -1,14 +1,14 @@
 # XL Release License Usage Plugin
 
-[![Build Status][xlr-license-usage-plugin-travis-image]][xlr-license-usage-plugin-travis-url]
-[![Codacy Badge][xlr-license-usage-plugin-codacy-image] ][xlr-license-usage-plugin-codacy-url]
-[![Code Climate][xlr-license-usage-plugin-code-climate-image] ][xlr-license-usage-plugin-code-climate-url]
-[![License: MIT][xlr-license-usage-plugin-license-image]][xlr-license-usage-plugin-license-url]
-[![Github All Releases][xlr-license-usage-plugin-downloads-image]]()
+[![Build Status][xlr-license-usage-tile-travis-image]][xlr-license-usage-tile-travis-url]
+[![Codacy Badge][xlr-license-usage-tile-codacy-image] ][xlr-license-usage-tile-codacy-url]
+[![Code Climate][xlr-license-usage-tile-code-climate-image] ][xlr-license-usage-tile-code-climate-url]
+[![License: MIT][xlr-license-usage-tile-license-image]][xlr-license-usage-tile-license-url]
+[![Github All Releases][xlr-license-usage-tile-downloads-image]]()
 
 ## Preface
 
-This document describes the functionality provided by the XL Release xlr-license-usage-plugin. 
+This document describes the functionality provided by the XL Release xlr-license-usage-tile. 
 
 See the [XL Release reference manual](https://docs.xebialabs.com/xl-release) for background information on XL Release and release automation concepts.  
 
@@ -23,7 +23,7 @@ The plugin makes available two global tiles to display license useage.  One for 
 
 ## Installation
 
-* Copy the latest JAR file from the [releases page](https://github.com/xebialabs-community/xlr-license-usage-plugin/releases) into the `XL_RELEASE_SERVER/plugins/__local__` directory.
+* Copy the latest JAR file from the [releases page](https://github.com/xebialabs-community/xlr-license-usage-tile/releases) into the `XL_RELEASE_SERVER/plugins/__local__` directory.
 * Restart the XL Release server.
 
 ## Usage
@@ -48,15 +48,15 @@ Build and package the plugins with...
 ./gradlew assemble
 ```
 
-[xlr-license-usage-plugin-travis-image]: https://travis-ci.org/xebialabs-community/xlr-license-usage-plugin.svg?branch=master
-[xlr-license-usage-plugin-travis-url]: https://travis-ci.org/xebialabs-community/xlr-license-usage-plugin
+[xlr-license-usage-tile-travis-image]: https://travis-ci.org/xebialabs-community/xlr-license-usage-tile.svg?branch=master
+[xlr-license-usage-tile-travis-url]: https://travis-ci.org/xebialabs-community/xlr-license-usage-tile
 
-[xlr-license-usage-plugin-codacy-image]: https://api.codacy.com/project/badge/Grade/88dec34743b84dac8f9aaaa665a99207
-[xlr-license-usage-plugin-codacy-url]: https://www.codacy.com/app/ladamato/xlr-license-usage-plugin
+[xlr-license-usage-tile-codacy-image]: https://api.codacy.com/project/badge/Grade/88dec34743b84dac8f9aaaa665a99207
+[xlr-license-usage-tile-codacy-url]: https://www.codacy.com/app/ladamato/xlr-license-usage-tile
 
-[xlr-license-usage-plugin-code-climate-image]: https://codeclimate.com/github/xebialabs-community/xlr-license-usage-plugin/badges/gpa.svg
-[xlr-license-usage-plugin-code-climate-url]: https://codeclimate.com/github/xebialabs-community/xlr-license-usage-plugin
+[xlr-license-usage-tile-code-climate-image]: https://codeclimate.com/github/xebialabs-community/xlr-license-usage-tile/badges/gpa.svg
+[xlr-license-usage-tile-code-climate-url]: https://codeclimate.com/github/xebialabs-community/xlr-license-usage-tile
 
-[xlr-license-usage-plugin-license-image]: https://img.shields.io/badge/License-MIT-yellow.svg
-[xlr-license-usage-plugin-license-url]: https://opensource.org/licenses/MIT
-[xlr-license-usage-plugin-downloads-image]: https://img.shields.io/github/downloads/xebialabs-community/xlr-license-usage-plugin/total.svg
+[xlr-license-usage-tile-license-image]: https://img.shields.io/badge/License-MIT-yellow.svg
+[xlr-license-usage-tile-license-url]: https://opensource.org/licenses/MIT
+[xlr-license-usage-tile-downloads-image]: https://img.shields.io/github/downloads/xebialabs-community/xlr-license-usage-tile/total.svg
