@@ -40,6 +40,8 @@ The plugin makes available two global tiles to display license useage.  One for 
 1. Optionally select 'License : XL Deploy' tile
     1. Configure XL Deploy tile by selecting an XL Deploy server you've configured in Settings -> Shared Configuration
 
+![Tiles](images/tiles.png)
+
 ## Developers
 
 Build and package the plugins with...

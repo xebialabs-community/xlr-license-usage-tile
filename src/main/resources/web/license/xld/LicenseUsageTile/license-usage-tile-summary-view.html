@@ -19,23 +19,25 @@ window.addEventListener("xlrelease.load", function () {
         $("#xld-users-active").append(usage.users_active)
 
         usage.licensed_usage.forEach(function (ci) {
-            // create a nice name from the ci type.  caps everything except the last token.
-            var ciToks = ci.ciType.split('.')
-            var ciTokCnt = ciToks.length;
-            var ciName = ""
-            for (var i = 0; i < ciTokCnt-1; i++) {
-                    ciName = ciName + ciToks[i].toUpperCase() + ' '
-            }
-            ciName = ciName + ciToks[ciTokCnt-1]
+            if ( ci.licensed > 0 ) {
+                // create a nice name from the ci type.  caps everything except the last token.
+                var ciToks = ci.ciType.split('.')
+                var ciTokCnt = ciToks.length;
+                var ciName = ""
+                for (var i = 0; i < ciTokCnt-1; i++) {
+                        ciName = ciName + ciToks[i].toUpperCase() + ' '
+                }
+                ciName = ciName + ciToks[ciTokCnt-1]
 
-            $('#xld-licensed-usage').append(
-                '<div class="license-usage-tile-wrapper">' + 
-                '<div class="grid-item">&nbsp;</div><div class="grid-item">&nbsp;</div>' +
-                '<div class="grid-item">' + ciName + '</div><div class="grid-item">&nbsp;</div>' +
-                '<div class="grid-item">&nbsp;Licensed</div><div class="grid-item">' + ci.licensed + '</div>' +
-                '<div class="grid-item">&nbsp;In Use</div><div class="grid-item">' + ci.inUse + '</div>' +
-                '</div>'
-            )
+                $('#xld-licensed-usage').append(
+                    '<div class="license-usage-tile-wrapper">' + 
+                    '<div class="grid-item">&nbsp;</div><div class="grid-item">&nbsp;</div>' +
+                    '<div class="grid-item">' + ciName + '</div><div class="grid-item">&nbsp;</div>' +
+                    '<div class="grid-item">&nbsp;Licensed</div><div class="grid-item">' + ci.licensed + '</div>' +
+                    '<div class="grid-item">&nbsp;In Use</div><div class="grid-item">' + ci.inUse + '</div>' +
+                    '</div>'
+                )
+            }
         })
     });
 })

@@ -21,14 +21,6 @@ window.addEventListener("xlrelease.load", function () {
             $("#xlr-expires").append(res.expiresAfter)
             $("#xlr-max-users").append(res.maxNumberOfUsers ? res.maxNumberOfUsers : 'unlimited')
             $("#xlr-users-remaining").append(res.usersLeftCount ? res.usersLeftCount : 'unlimited')
-// product: "XL Release"
-// licensedTo: "XebiaLabs"
-// contact: "XebiaLabs Internal Use Only <info@xebialabs.com>"
-// expiresAfter: "2037-01-01"
-// maxNumberOfUsers: null
-// usersLeftCount: null
-// repositoryId: null
-// version: "3"            
         })
         .catch(error=>console.log(error))
 

@@ -21,20 +21,6 @@ request = HttpRequest({"url": xldeployServer.get('url')}, username=username, pas
 # get license info ---
 response = request.get('/deployit/internal/configuration/license-info', contentType='application/json')
 
-# {
-#   "product":"XL Deploy",
-#   "licensedTo":"XebiaLabs",
-#   "contact":"XebiaLabs Internal Use Only <info@xebialabs.com>",
-#   "expiresAfter":"2037-01-01",
-#   "remainingDays":"6307",
-#   "licensedCiUsages":[{"ciType":"xl.Satellite","licensed":1000,"inUse":0}],
-#   "licensedPlugins":["jbossas-plugin","wmq-plugin","osb-plugin","tomcat-plugin","wps-plugin","windows-plugin","iis-plugin","biztalk-plugin","wls-plugin","was-plugin","glassfish-plugin","jbossdm-plugin"],
-#   "supportPolicy":"8x5",
-#   "maxUsers":null,
-#   "edition":"Enterprise",
-#   "currentTime":"2019-09-26T15:40:38.207Z"
-# }
-
 if response.status != 200:
     raise Exception('ERROR: Unable to get license info. Status %s' % response.status)
 
