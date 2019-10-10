@@ -31,6 +31,7 @@ The plugin makes available two global tiles to display license useage.  One for 
 **Steps**
 
 ***Overall***
+
 1. Navigate to Dashboards tab
 1. Click 'Add New Dashboard' button
     1. Select 'blank' dashboard template
@@ -38,12 +39,14 @@ The plugin makes available two global tiles to display license useage.  One for 
     3. Provide any permissions for this dashboard, then press 'Create'
 
 ***XL Release Usage***
+
 1. Click 'Add Tile" button
 2. Select 'License : XL Release' tile
 3. If you'd like to limit the number of days since last login to consider a user inactive, press the gear icon on the tile and set your *Last Use Cutoff* value.
 4. Press Save.
 
 ***XL Deploy Usage***
+
 1. Confirm you have a XL Deploy instance defined in XL Release (Settings|Shared Configuration|XL Deploy Server)
 2. Click 'Add Tile" button
 3. On your usage dashboard, Select 'License : XL Deploy' tile
@@ -52,7 +55,21 @@ The plugin makes available two global tiles to display license useage.  One for 
 5. If needed, you can also define a different username and/or password for the XL Deploy instance you are tracking.
 6. Press Save.
 
+### Tiles Display
+
 ![Tiles](images/tiles.png)
+
+### XL Release Users Detail
+
+When you click the XL Release tile, you will see a user page as shown below.  XL Release doesn't have a concept of 'active' or 'inactive' users.  Instead the tile has a property 'days since login', defaulting to 30 days, that groups users as active or inactive.  Anyone who has not logged in within the last 'days since login' are considered inactive.
+
+![XLR Users](images/users-xlr.png)
+
+### XL Deploy Users Detail
+
+When you click the XL Deploy tile, you will see a user page as shown below.  Note that XL Deploy does not track last login date so the tile is unable to differentiate between active and inactive users.
+
+![XLD Users](images/users-xld.png)
 
 ## Developers
 
