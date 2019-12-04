@@ -63,15 +63,17 @@ for role in roles:
             users[principal] = [role['role']['name']]
 
 # form response
+
+keymap = {"product": 'product', "licensed_to": 'licensedTo', "expires": 'expiresAfter', "licensed_usage": 'licensedCiUsages', "users_max": 'maxUsers'}
+usage = {}
+for k in keymap.keys():
+    try:
+        usage[k] = lic[keymap[k]]
+    except KeyError:
+        usage[k] = ""
+usage['users_active'] = len(users)
+
 data = {
-    "usage": { 
-        "product": lic['product'],
-        "licensed_to": lic['licensedTo'], 
-        "expires": lic['expiresAfter'],
-        "licensed_usage": lic['licensedCiUsages'],
-        "users_max": lic['maxUsers'],
-        "users_active": len(users)
-    },
+    "usage": usage,
     "users_active": users
 }
-
