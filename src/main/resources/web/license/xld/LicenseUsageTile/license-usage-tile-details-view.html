@@ -35,6 +35,15 @@
                     '</tr>'
                 );
             })
+            var roles = res.data.data.roles;
+            roles.forEach(role=>{
+                $("#roles").append(
+                    '<tr>' +
+                    '<td>' + role['role']['name'] + '</td>' +
+                    '<td>' + role['principals'] + '</td>' +
+                    '</tr>'
+                );
+            })
         });
     });
 </script>
@@ -48,6 +57,18 @@
         </tr>
         </thead>
         <tbody id="active-users">
+
+        </tbody>
+    </table>
+    <h3>Roles</h3>
+    <table class="table table-rounded table-striped">
+        <thead>
+        <tr>
+            <th>Role</th>
+            <th>Usernames</th>
+        </tr>
+        </thead>
+        <tbody id="roles">
 
         </tbody>
     </table>

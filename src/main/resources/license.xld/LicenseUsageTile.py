@@ -56,7 +56,7 @@ roles = json.loads(response.response)
 users = {}
 for role in roles:
     for principal in role['principals']:
-        print('Procssing principal: %s' % principal)
+        print('Processing principal: %s' % principal)
         if principal in users:
             users[principal].append(role['role']['name'])
         else:
@@ -75,5 +75,6 @@ usage['users_active'] = len(users)
 
 data = {
     "usage": usage,
-    "users_active": users
+    "users_active": users,
+    "roles": roles
 }
