@@ -10,11 +10,21 @@
 
 
 import sys
-import json
 
-from datetime import datetime, timedelta
 from collections import namedtuple
 from xlrelease.HttpRequest import HttpRequest
+
+import logging
+import json
+from datetime import datetime, timedelta
+
+logging.basicConfig(filename='log/custom-tile.log',
+                            filemode='a',
+                            format='%(asctime)s,%(msecs)d %(name)s %(levelname)s %(message)s',
+                            datefmt='%H:%M:%S',
+                            level=logging.DEBUG)
+
+#logging.debug("main: begin xld")
 
 # XL Deploy License Usage Tile
 
@@ -30,15 +40,20 @@ if not password:
 request = HttpRequest({"url": xldeployServer.get('url')}, username=username, password=password)
 
 # get license info ---
-response = request.get('/deployit/internal/configuration/license-info', contentType='application/json')
+response = request.get('/deployit/internal/configuration/license-info', accept = 'application/json', contentType = 'application/json')
 
 if response.status != 200:
-    raise Exception('ERROR: Unable to get license info. Status %s' % response.status)
+    msg = 'ERROR: Unable to get license info. Status %s' % response.status
+    logging.error(msg)
+    raise Exception(msg)
 
 lic = json.loads(response.response)
 
+#logging.debug("license-info --------------")
+#logging.debug(lic)
+
 # get role info ----
-response = request.get('/deployit/security/role/principals', contentType='application/json')
+response = request.get('/deployit/security/role/principals', accept = 'application/json', contentType = 'application/json')
 
 # [
 #   {"role":
@@ -48,7 +63,9 @@ response = request.get('/deployit/security/role/principals', contentType='applic
 # ]
 
 if response.status != 200:
-    raise Exception('ERROR: Unable to get role info. Status %s' % response.status)
+    msg = 'ERROR: Unable to get role info. Status %s' % response.status
+    logging.error(msg)
+    raise Exception(msg)
 
 roles = json.loads(response.response)
 
@@ -56,11 +73,16 @@ roles = json.loads(response.response)
 users = {}
 for role in roles:
     for principal in role['principals']:
-        print('Procssing principal: %s' % principal)
         if principal in users:
             users[principal].append(role['role']['name'])
         else:
             users[principal] = [role['role']['name']]
+
+# different version of xld have different keys for this
+if 'licensedCiUsages' in lic:
+    licensedCiUsagesTag = 'licensedCiUsages'
+else:
+    licensedCiUsagesTag = 'licensedCiUsage'
 
 # form response
 data = {
@@ -68,10 +90,11 @@ data = {
         "product": lic['product'],
         "licensed_to": lic['licensedTo'], 
         "expires": lic['expiresAfter'],
-        "licensed_usage": lic['licensedCiUsages'],
+        "licensed_usage": lic[licensedCiUsagesTag],
         "users_max": lic['maxUsers'],
         "users_active": len(users)
     },
-    "users_active": users
+    "users_active": users,
+    "roles": roles
 }
 
