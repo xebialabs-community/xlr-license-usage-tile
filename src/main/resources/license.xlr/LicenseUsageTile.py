@@ -59,27 +59,24 @@ logging.debug("got %s roles..." % str(len(roles)))
 user_roles = {}
 active_roles = []
 for role in roles:
-    logging.debug("role: %s" % role.name)
-
-    r = {}
     if len(role.principals) > 0:
+        r = {}
         r['name'] = role.name
         r['principals'] = []
 
-    for principal in role.principals:
-        username = principal.username.lower()
-        logging.debug("  principal: %s" % username)
+        for principal in role.principals:
+            username = principal.username.lower()
 
-        r['principals'].append(username)
+            r['principals'].append(username)
 
-        if username in user_roles:
-            logging.debug("    appending")
-            user_roles[username].append(role.name)
-        else:
-            logging.debug("    adding")
-            user_roles[username] = [role.name]
+            if username in user_roles:
+                logging.debug("    appending")
+                user_roles[username].append(role.name)
+            else:
+                logging.debug("    adding")
+                user_roles[username] = [role.name]
 
-    active_roles.append(r)
+        active_roles.append(r)
 
 # convert to list of dict and add roles
 xlr_active_users = convert_user_obj_list(xlr_active_users_obj, user_roles)
