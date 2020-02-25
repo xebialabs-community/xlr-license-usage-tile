@@ -9,7 +9,7 @@ apply plugin: 'java'
 apply plugin: 'maven'
 
 if (!project.hasProperty('release.scope')) {
-  project.ext['release.scope'] = 'patch'
+  project.ext['release.scope'] = 'final'
 }
 
 if (!project.hasProperty('release.useLastTag')) {
