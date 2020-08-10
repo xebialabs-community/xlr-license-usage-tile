@@ -39,6 +39,9 @@ def convert_user_obj_list(objs, user_roles):
             user['roles'] = user_roles[username]
             logging.debug('  found, adding roles: ')
             logging.debug(user['roles'])
+        else:
+            logging.debug(' did not find roles for user: %s' % username)
+            user['roles'] = ["None Assigned"]
 
         result.append(user)
 

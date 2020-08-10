@@ -1,0 +1,20 @@
+version: '3.7'
+services:
+  xl-deploy:
+    image: xebialabs/xl-deploy:9.7
+    ports:
+      - "14516:4516"
+    environment:
+      - ADMIN_PASSWORD=admin
+      - ACCEPT_EULA=Y
+    
+  xl-release:
+    image: xebialabs/xl-release:9.7
+    ports:
+      - "15516:5516"
+    environment:
+      - ADMIN_PASSWORD=admin
+      - ACCEPT_EULA=Y
+    volumes:
+      - ./../../../../build/libs/:/opt/xebialabs/xl-release-server/plugins/__local__/
+      - ./../../../../build/reports/tests/log/:/opt/xebialabs/xl-release-server/log/

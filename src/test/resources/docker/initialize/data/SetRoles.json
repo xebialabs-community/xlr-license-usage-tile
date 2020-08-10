@@ -1,0 +1,53 @@
+[
+  {
+    "name": "devRole",
+    "permissions": [
+      "application#edit",
+      "dashboard#create",
+      "folder#create_top_level"
+    ],
+    "principals": [
+      {
+        "username": "user1",
+        "fullname": "User One"
+      },
+      {
+        "username": "user2",
+        "fullname": "User Two"
+      }
+    ]
+  },
+  {
+    "name": "opsRole",
+    "permissions": [
+      "reservation#edit",
+      "dashboard#create"
+    ],
+    "principals": [
+      {
+        "username": "user3",
+        "fullname": "User Three"
+      },
+      {
+        "username": "user4",
+        "fullname": "User Four"
+      }
+    ]
+  },
+  {
+    "name": "userAdmin",
+    "permissions": [
+      "reports#view"
+    ],
+    "principals": [
+      {
+        "username": "user1",
+        "fullname": "User One"
+      },
+      {
+        "username": "user4",
+        "fullname": "User Four"
+      }
+    ]
+  }
+]

@@ -8,14 +8,6 @@ apply plugin: 'idea'
 apply plugin: 'java'
 apply plugin: 'maven'
 
-if (!project.hasProperty('release.scope')) {
-  project.ext['release.scope'] = 'final'
-}
-
-if (!project.hasProperty('release.useLastTag')) {
-  project.ext['release.useLastTag'] = true
-}
-
 repositories {
   mavenLocal()
   mavenCentral()
@@ -27,14 +19,22 @@ repositories {
   // }
 }
 
+// These are used by nebula.release
+if (!project.hasProperty('release.scope')) {
+  project.ext['release.scope'] = 'patch'
+}
+if (!project.hasProperty('release.useLastTag')) {
+  project.ext['release.useLastTag'] = true
+}
+
 test {
-    // Auto detected Unit tests only, exclude the end to end integration test
+    // auto detected Unit tests only, exclude the end to end integration test
     exclude '**/*IntegrationTest.class'
     // show standard out and standard error of the test JVM(s) on the console
     testLogging.showStandardStreams = true
 }
- 
-task itest(type: Test, dependsOn: ['assemble']) {
+
+task integrationTest(type: Test, dependsOn: ['build']) {
     // do not automatically scan for tests
     scanForTestClasses = false 
     // explicitly include the integration test
@@ -57,10 +57,20 @@ dependencies {
   compile 'org.yaml:snakeyaml:1.24'
 }
 
+
 license {
   header rootProject.file('License.md')
   strictCheck false
-  excludes(["**/*.png",  "**/*.txt", "**/*.json", "**/*.pyc", "**/*.yml", "**/*.yaml", "**/*.properties"])
+  exclude '**/*.png'
+  exclude '**/*.txt'
+  exclude '**/*.json'
+  exclude '**/*.yml'
+  exclude '**/*.yaml'
+  exclude '**/*.xml'
+  exclude '**/*.html'
+  exclude '**/*.properties'
+  exclude '**/*.pyc'
+  exclude '**/Dockerfile'
   ext.year = Calendar.getInstance().get(Calendar.YEAR)
   ext.name = 'XEBIALABS'
 }

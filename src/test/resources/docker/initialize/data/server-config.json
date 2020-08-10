@@ -1,0 +1,9 @@
+{
+    "id": "null",
+    "type": "xldeploy.XLDeployServer",
+    "title": "xldeploy server",
+    "url": "http://xl-deploy:4516",
+    "authenticationMethod": "Basic",
+    "username": "admin",
+    "password": "admin"
+}

@@ -1,0 +1,6 @@
+{
+  "password" : "testUserPa55",
+  "loginAllowed" : true,
+  "fullName" : "User Five",
+  "email": "user5@test.com"
+}
