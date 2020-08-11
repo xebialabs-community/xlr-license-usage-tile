@@ -14,9 +14,6 @@ repositories {
   maven {
     url 'https://dist.xebialabs.com/public/maven2'
   }
-  // maven {
-  //   url 'https://dl.bintray.com/palantir/releases' // docker-compose-rule is published on bintray
-  // }
 }
 
 version="1.2.0"
