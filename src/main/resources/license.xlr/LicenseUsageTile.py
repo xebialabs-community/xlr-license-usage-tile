@@ -44,7 +44,6 @@ def convert_user_obj_list(objs, user_roles):
             user['roles'] = ["None Assigned"]
 
         result.append(user)
-
     return result
 
 # calculate cutoff date
